@@ -11,8 +11,6 @@ const TitleCard = props => {
     const {id, title, popularity, releaseDate, poster, description} = props
     const imageBaseUri = 'https://image.tmdb.org/t/p/w185'
 
-    console.log('poster: ', `${imageBaseUri}${poster}`)
-
     return(
         <Box>
             <HStack
