@@ -8,8 +8,9 @@ import { Box,
     Heading} from "native-base"
 
 const TitleCard = props => {
-    const {id, title, popularity, releaseDate, poster, description} = props
-    const imageBaseUri = 'https://image.tmdb.org/t/p/w185'
+    const {navigation, title, popularity, releaseDate, poster, description} = props
+    const imgBaseUri = 'https://image.tmdb.org/t/p/w185'
+    const imgUri= `${imgBaseUri}${poster}`
 
     return(
         <Box>
@@ -19,7 +20,7 @@ const TitleCard = props => {
             >
                 <Box width='30%' alignSelf='center'>
                     <Image alt={title} 
-                    source={{uri:`${ imageBaseUri}${poster}`}} 
+                    source={{uri:imgUri}} 
                     size='lg' />
                 </Box>
 
@@ -27,7 +28,16 @@ const TitleCard = props => {
                     <Heading size='xs'>{title}</Heading>
                     <Text>Popularity: {popularity}</Text>
                     <Text>Release Date: {releaseDate}</Text>
-                    <Button bg='#C9184A'>More details</Button>
+                    <Button bg='#C9184A'
+                    onPress={() => {
+                        navigation.navigate('Title', {
+                            title,
+                            imgUri,
+                            description,
+                            popularity,
+                            releaseDate
+                        })
+                    }}>More details</Button>
                 </VStack>
             </HStack>
 
