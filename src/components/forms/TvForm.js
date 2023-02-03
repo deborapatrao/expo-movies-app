@@ -7,14 +7,14 @@ import { FormControl,
 import { Ionicons } from "@expo/vector-icons"
 import { useEffect, useState } from "react"
 
-const MoviesForm = props => {
+const TvForm = props => {
     const {onTypeChange, fetchTitles} = props
-    const [movieListType, setMovieListType] = useState('popular')
-console.log('movie type: ', movieListType)
+    const [tvListType, setTvListType] = useState('popular')
+
     
     useEffect(() => {
         fetchTitles()
-    }, [movieListType])
+    }, [tvListType])
 
     return (
         <Box 
@@ -28,23 +28,23 @@ console.log('movie type: ', movieListType)
                 width='70%'
                 dropdownIcon={<Icon size={5} paddingRight={7} as={<Ionicons name='chevron-down-outline'/>}
                 color='gray.400'/>}
-                selectedValue={movieListType}
+                selectedValue={tvListType}
                     onValueChange={value => {
                         onTypeChange(value)
-                        setMovieListType(value)}}
+                        setTvListType(value)}}
                 _selectedItem={{
                     bg:'#FFCCD5',
                     endIcon: <CheckIcon size={5} />
                 }}
                 >
                     <Select.Item label='Popular' value='popular'/>
-                    <Select.Item label='Now playing' value='now_playing'/>
+                    <Select.Item label='Airing today' value='airing_today'/>
+                    <Select.Item label='On the air' value='on_the_air'/>
                     <Select.Item label='Top rated' value='top_rated'/>
-                    <Select.Item label='Upcoming' value='upcoming'/>
                 </Select>
             </FormControl>
         </Box>
     )
 }
 
-export default MoviesForm
+export default TvForm

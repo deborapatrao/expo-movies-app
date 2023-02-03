@@ -4,6 +4,7 @@ import { createNativeStackNavigator } from "@react-navigation/native-stack";
 import IndexScreen from "../screens/IndexScreen";
 import TitleScreen from "../screens/TitleScreen";
 import MoviesScreen from "../screens/MoviesScreen";
+import TvScreen from "../screens/TvScreen"
 
 const Stack = createNativeStackNavigator()
 
@@ -13,7 +14,7 @@ const AppStack = () => {
         <Stack.Navigator>
             <Stack.Screen
             name='Movies'
-            component={MoviesScreen}
+            component={TvScreen}
             options={{
                 title:'Movies App',
                 headerStyle: {
