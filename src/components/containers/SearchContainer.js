@@ -1,11 +1,11 @@
 import { Center, Container } from "native-base"
 import { useState } from "react"
 import Form from "../forms/Form"
-import { getTitles } from "../services/api"
+import { getSearchTitles } from "../services/api"
 import Loading from "../layout/Loading"
 import TitlesList from "../lists/TitlesList"
 
-const SearchContainer = ({ navigation }) => {
+const SearchContainer = ({ navigation, route }) => {
     const [isLoading, setIsLoading] = useState(false)
     const [titles, setTitles] = useState([])
     const [searchKeyword, setSearchKeyword] = useState(null)
@@ -40,7 +40,7 @@ const SearchContainer = ({ navigation }) => {
                 <Form onKeywordChange={handleKeywordChange}
                 onTypeChange={handleTypeChange}
                 fetchTitles={fetchTitles}/>
-                {isLoading ? <Loading /> : <TitlesList titles={titles} navigation={navigation}/>}
+                {isLoading ? <Loading /> : <TitlesList titles={titles} navigation={navigation} route={route}/>}
             </Center>
         </Container>
     )

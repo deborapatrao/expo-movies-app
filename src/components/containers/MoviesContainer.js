@@ -6,7 +6,7 @@ import TitlesList from "../lists/TitlesList"
 import Loading from "../layout/Loading"
 
 
-const MoviesContainer = ({navigation}) => {
+const MoviesContainer = ({navigation, route}) => {
     const [isLoading, setIsLoading] = useState(false)
     const [titles, setTitles] = useState([])
     const [movieListType, setMovieListType] = useState('popular')
@@ -35,7 +35,7 @@ const MoviesContainer = ({navigation}) => {
             <Center px={4}>
             <MoviesForm onTypeChange={handleTypeChange}
             fetchTitles={fetchTitles}/>
-            {isLoading ? <Loading /> : <TitlesList titles={titles} navigation={navigation}/>}
+            {isLoading ? <Loading /> : <TitlesList titles={titles} navigation={navigation} route={route}/>}
             </Center>
         </Container>
     )

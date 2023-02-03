@@ -7,11 +7,11 @@ import { Box,
     VStack, 
     HStack} from "native-base"
 
-const TitleContainer = ({ navigation, route }) => {
-    const { title, imgUri, description, popularity, releaseDate } = route.params
-
+const TitleContainer = ({ route }) => {
+    const { id, title, imgUri, description, popularity, releaseDate } = route.params
+    
     return(
-        <>
+        
         <Box
         width='100%'
         height='100%'
@@ -33,13 +33,13 @@ const TitleContainer = ({ navigation, route }) => {
                 <Text fontSize='xs'>{description}</Text>
 
                 <HStack>
-                    <Text fontSize='xs' b>Popularity: {popularity}</Text>
+                    <Text fontSize='xs' >Popularity: {popularity}</Text>
                     <Divider orientation="vertical" mx={3}/>
-                    <Text fontSize='xs' b>Release Date: {releaseDate}</Text>
+                    <Text fontSize='xs' >Release Date: {releaseDate}</Text>
                 </HStack>
             </VStack>
         </Box>
-        </>
+        
     )
 }
 

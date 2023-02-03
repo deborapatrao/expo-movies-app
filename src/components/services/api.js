@@ -30,3 +30,4 @@ export const getTitles = async (media, type) => {
         console.error(error);
     }
 }
+

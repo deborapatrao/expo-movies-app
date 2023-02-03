@@ -23,7 +23,7 @@ const Form = props => {
     return(
         <VStack space={2} py={5}>
         
-            <FormControl isRequired>
+            <FormControl isRequired isInvalid>
                 <FormControl.Label fontSize='sm'>Search Movie/Show Name</FormControl.Label>
                 <Input 
                 placeholder='i.e. James Bond, CSI'
@@ -71,6 +71,7 @@ const Form = props => {
                     _pressed={{ backgroundColor:'#800F2F' }}
                     >Search</Button>
             </HStack>
+            <FormControl.ErrorMessage>Movie/TV show name is required</FormControl.ErrorMessage>
             </FormControl>
         </VStack>
     )

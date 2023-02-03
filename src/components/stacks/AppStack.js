@@ -5,6 +5,7 @@ import IndexScreen from "../screens/IndexScreen";
 import TitleScreen from "../screens/TitleScreen";
 import MoviesScreen from "../screens/MoviesScreen";
 import TvScreen from "../screens/TvScreen"
+import Header from "../layout/Header";
 
 const Stack = createNativeStackNavigator()
 
@@ -13,16 +14,10 @@ const AppStack = () => {
     <NavigationContainer>
         <Stack.Navigator>
             <Stack.Screen
-            name='Movies'
-            component={TvScreen}
+            name='Index'
+            component={IndexScreen}
             options={{
-                title:'Movies App',
-                headerStyle: {
-                    backgroundColor:'#800F2F'
-                },
-                headerTitleStyle: {
-                    color: '#fff'
-                }
+                headerShown: false
             }}
             />
 
@@ -35,6 +30,19 @@ const AppStack = () => {
                 headerTintColor: '#A4133C'
             })}
             />
+
+            <Stack.Screen 
+            name='Movies'
+            component={MoviesScreen}/>
+
+            <Stack.Screen
+            name='Tv'
+            component={TvScreen}
+            />
+
+            <Stack.Screen 
+            name='header'
+            component={Header}/>
         </Stack.Navigator>
     </NavigationContainer>
     )
@@ -55,6 +63,16 @@ const AppStack = () => {
 //             <Tab.Screen 
 //             name='Title'
 //             component={TitleScreen}
+//             />
+
+//             <Tab.Screen 
+//             name='Movies'
+//             component={MoviesScreen}
+//             />
+
+//             <Tab.Screen 
+//             name='Tv'
+//             component={TvScreen}
 //             />
 //         </Tab.Navigator>
 //     </NavigationContainer>

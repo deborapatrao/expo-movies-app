@@ -6,7 +6,7 @@ import TitlesList from "../lists/TitlesList"
 import Loading from "../layout/Loading"
 
 
-const TvShowContainer = ({navigation}) => {
+const TvShowContainer = ({navigation, route}) => {
     const [isLoading, setIsLoading] = useState(false)
     const [titles, setTitles] = useState([])
     const [tvListType, setTvListType] = useState('popular')
@@ -35,7 +35,7 @@ const TvShowContainer = ({navigation}) => {
             <Center px={4}>
             <TvForm onTypeChange={handleTypeChange}
             fetchTitles={fetchTitles}/>
-            {isLoading ? <Loading /> : <TitlesList titles={titles} navigation={navigation}/>}
+            {isLoading ? <Loading /> : <TitlesList titles={titles} navigation={navigation} route={route}/>}
             </Center>
         </Container>
     )
