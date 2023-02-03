@@ -14,32 +14,6 @@ const Header = ({ navigation, route }) => {
             </HStack>
         </Box>
 
-        <HStack
-        direction='row'
-        py={3}
-        justifyContent='space-around'
-        >
-                <Pressable onPress={() => {
-                    navigation.navigate('Movies', {navigation})
-                }}>
-                    <Text>
-                    Movies
-                    </Text>
-                </Pressable>
-
-                <Pressable>
-                <Text>
-                    Search
-                    </Text>
-                </Pressable>
-
-                <Pressable>
-                <Text>
-                    TV Shows
-                    </Text>
-                </Pressable>
-
-        </HStack>
         </>
     )
 }

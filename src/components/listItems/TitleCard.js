@@ -40,7 +40,7 @@ const TitleCard = props => {
                     _pressed={{ backgroundColor:'#800F2F' }}
                     onPress={() => {
                         navigation.navigate('Title', {
-                            id,
+                            // id,
                             title,
                             imgUri,
                             description,
