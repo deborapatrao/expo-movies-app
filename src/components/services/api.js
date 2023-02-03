@@ -2,9 +2,24 @@ import axios from "axios"
 import qs from 'qs'
 import { APP_KEY, BASE_URL } from "../config/api_config"
 
-export const getTitles = async (keyword, type) => {
+export const getSearchTitles = async (keyword, type) => {
     
-    const url = `${BASE_URL}search/${type}?api_key=${APP_KEY}&page=1&query=${keyword}`
+    const url = `${BASE_URL}search/${type}${APP_KEY}&page=1&query=${keyword}`
+    const axios = require('axios');
+    try {
+        const response = await axios.get(url);
+
+        const titles = response.data.results;
+        return titles 
+        
+    } catch (error) {
+        console.error(error);
+    }
+}
+
+export const getTitles = async (media, type) => {
+    const url = `${BASE_URL}${media}/${type}${APP_KEY}&page=1`
+
     const axios = require('axios');
     try {
         const response = await axios.get(url);

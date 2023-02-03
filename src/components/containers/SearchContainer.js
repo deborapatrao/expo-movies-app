@@ -14,7 +14,7 @@ const SearchContainer = ({ navigation }) => {
     const fetchTitles = () => {
         setIsLoading(true)
 
-        getTitles(searchKeyword, searchType).then(
+        getSearchTitles(searchKeyword, searchType).then(
             titles => {
                 setTitles(titles)
                 setIsLoading(false)
