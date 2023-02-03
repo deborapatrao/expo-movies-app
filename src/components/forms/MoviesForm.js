@@ -10,7 +10,6 @@ import { useEffect, useState } from "react"
 const MoviesForm = props => {
     const {onTypeChange, fetchTitles} = props
     const [movieListType, setMovieListType] = useState('popular')
-console.log('movie type: ', movieListType)
     
     useEffect(() => {
         fetchTitles()

@@ -10,7 +10,7 @@ import { Box,
 import { Ionicons } from "@expo/vector-icons"
 
 const TitleCard = props => {
-    const {navigation, title, popularity, releaseDate, poster, description} = props
+    const {navigation, id, title, popularity, releaseDate, poster, description} = props
     const imgBaseUri = 'https://image.tmdb.org/t/p/w185'
     const imgUri= `${imgBaseUri}${poster}`
 
@@ -40,7 +40,7 @@ const TitleCard = props => {
                     _pressed={{ backgroundColor:'#800F2F' }}
                     onPress={() => {
                         navigation.navigate('Title', {
-                            // id,
+                            id,
                             title,
                             imgUri,
                             description,

@@ -11,12 +11,8 @@ import { NavigationContainer } from '@react-navigation/native';
 const App = () => {
   return (
       <NativeBaseProvider>
-        <NavigationContainer>
-        <Header />
         <AppStack />
-        {/* <TabStack /> */}
         <StatusBar style="light" />
-        </NavigationContainer>
       </NativeBaseProvider>
   )
 }

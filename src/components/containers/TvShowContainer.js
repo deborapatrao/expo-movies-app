@@ -31,6 +31,7 @@ const TvShowContainer = ({navigation, route}) => {
 
     return(
         <Container maxWidth='100%'
+        bg='#fff'
         justifyItems='center'>
             <Center px={4}>
             <TvForm onTypeChange={handleTypeChange}

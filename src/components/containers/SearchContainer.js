@@ -1,4 +1,4 @@
-import { Center, Container } from "native-base"
+import { Box, Center, Container, Text } from "native-base"
 import { useState } from "react"
 import Form from "../forms/Form"
 import { getSearchTitles } from "../services/api"
@@ -10,7 +10,7 @@ const SearchContainer = ({ navigation, route }) => {
     const [titles, setTitles] = useState([])
     const [searchKeyword, setSearchKeyword] = useState(null)
     const [searchType, setSearchType] = useState(null)
-    
+
     const fetchTitles = () => {
         setIsLoading(true)
 
@@ -35,11 +35,12 @@ const SearchContainer = ({ navigation, route }) => {
 
 
     return(
-        <Container maxWidth='100%'>
+        <Container maxWidth='100%' bg='#fff'>
             <Center px={4}>
                 <Form onKeywordChange={handleKeywordChange}
                 onTypeChange={handleTypeChange}
                 fetchTitles={fetchTitles}/>
+                {titles.length===0 ? <Text fontSize='xl' bold mt={20}>Please initiate a search</Text> : null}
                 {isLoading ? <Loading /> : <TitlesList titles={titles} navigation={navigation} route={route}/>}
             </Center>
         </Container>

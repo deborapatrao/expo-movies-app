@@ -9,7 +9,7 @@ const TitlesList = ({ navigation, route, titles }) => {
         data={titles}
         renderItem={({ item }) => 
             <TitleCard 
-            // id={item.id}
+            id={item.id}
             title={item.original_title ? item.original_title : item.original_name}
             popularity={item.popularity}
             releaseDate={item.release_date}

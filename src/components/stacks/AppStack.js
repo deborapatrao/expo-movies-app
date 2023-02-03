@@ -1,48 +1,39 @@
-import { createMaterialTopTabNavigator } from "@react-navigation/material-top-tabs";
 import { NavigationContainer } from "@react-navigation/native";
 import { createNativeStackNavigator } from "@react-navigation/native-stack";
-import IndexScreen from "../screens/IndexScreen";
 import TitleScreen from "../screens/TitleScreen";
-import MoviesScreen from "../screens/MoviesScreen";
-import TvScreen from "../screens/TvScreen"
-import Header from "../layout/Header";
+import TabStack from "./TabStack";
 
-
-const Tab = createMaterialTopTabNavigator()
+const Stack = createNativeStackNavigator()
 
 const AppStack = () => {
     return(
-        <Tab.Navigator
-        screenOptions={{
-            headerShown: false,
-            tabBarLabelStyle: { textTransform: 'none', fontSize: 14.5  },
-                tabBarActiveTintColor: '#A4133C',
-                tabBarIndicatorStyle: {
-                    backgroundColor: '#A4133C',
-                    height: 3,
-                }
-        }}>
-            <Tab.Screen
+    <NavigationContainer>
+        <Stack.Navigator>
+            <Stack.Screen
             name='Index'
-            component={IndexScreen}
+            component={TabStack}
+            options={{
+                title:'Movies App',
+                headerStyle: {
+                    backgroundColor:'#800F2F'
+                },
+                headerTitleStyle: {
+                    color: '#fff'
+                }
+            }}
             />
 
-            {/* <Tab.Screen 
+            <Stack.Screen 
             name='Title'
             component={TitleScreen}
-            /> */}
-
-            <Tab.Screen 
-            name='Movies'
-            component={MoviesScreen}
+            options={({ route }) => ({
+                title:route.params.title,
+                headerBackTitle: 'Back to List',
+                headerTintColor: '#A4133C'
+            })}
             />
-
-            <Tab.Screen 
-            name='Tv'
-            component={TvScreen}
-            />
-        </Tab.Navigator>
-
+        </Stack.Navigator>
+    </NavigationContainer>
     )
 }
 
