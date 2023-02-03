@@ -20,6 +20,7 @@ console.log('movie type: ', movieListType)
         <Box 
         py={5}
         width='100%'
+        alignItems='center'
         >
             <FormControl
             alignItems='center'>
@@ -31,8 +32,6 @@ console.log('movie type: ', movieListType)
                     onValueChange={value => {
                         onTypeChange(value)
                         setMovieListType(value)}}
-                accessibilityLabel='Choose search type'
-                placeholder='Choose search type'
                 _selectedItem={{
                     bg:'#FFCCD5',
                     endIcon: <CheckIcon size={5} />

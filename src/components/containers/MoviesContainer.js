@@ -2,11 +2,13 @@ import { Center, Container } from "native-base"
 import { useState } from "react"
 import MoviesForm from "../forms/MoviesForm"
 import { getTitles } from "../services/api"
+import TitlesList from "../lists/TitlesList"
+import Loading from "../layout/Loading"
 
 
 const MoviesContainer = ({navigation}) => {
     const [isLoading, setIsLoading] = useState(false)
-    const [movies, setMovies] = useState([])
+    const [titles, setTitles] = useState([])
     const [movieListType, setMovieListType] = useState('popular')
 
 
@@ -14,8 +16,8 @@ const MoviesContainer = ({navigation}) => {
         setIsLoading(true)
 
         getTitles('movie', movieListType).then(
-            movies => {
-                setMovies(movies)
+            titles => {
+                setTitles(titles)
                 setIsLoading(false)
             }, error => {
                 console.log('Error: ', error)
@@ -28,10 +30,13 @@ const MoviesContainer = ({navigation}) => {
     }
 
     return(
-        <Container minWidth='100%'
+        <Container maxWidth='100%'
         justifyItems='center'>
+            <Center px={4}>
             <MoviesForm onTypeChange={handleTypeChange}
             fetchTitles={fetchTitles}/>
+            {isLoading ? <Loading /> : <TitlesList titles={titles} navigation={navigation}/>}
+            </Center>
         </Container>
     )
 }
