@@ -41,7 +41,7 @@ const SearchContainer = ({ navigation, route }) => {
                 onTypeChange={handleTypeChange}
                 fetchTitles={fetchTitles}/>
                 {titles.length===0 ? <Text fontSize='xl' bold mt={20}>Please initiate a search</Text> : null}
-                {isLoading ? <Loading /> : <TitlesList titles={titles} navigation={navigation} route={route}/>}
+                {isLoading ? <Loading /> : <TitlesList titles={titles} navigation={navigation} route={route} type={searchType}/>}
             </Center>
         </Container>
     )

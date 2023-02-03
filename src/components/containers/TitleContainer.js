@@ -5,10 +5,37 @@ import { Box,
     Image,
     Center, 
     VStack, 
-    HStack} from "native-base"
+    HStack,
+    Icon} from "native-base"
+import { Ionicons } from "@expo/vector-icons"
+import { getTitle } from "../services/api"
+import { useEffect, useState } from "react"
 
 const TitleContainer = ({ route }) => {
-    const { id, title, imgUri, description, popularity, releaseDate } = route.params
+    const { id,
+        type
+        // title, 
+        // imgUri, 
+        // description, 
+        // popularity, 
+        // releaseDate 
+    } = route.params
+    const [title, setTitle] = useState([])
+    const imgUri = `https://image.tmdb.org/t/p/w185${title.poster_path}`
+
+    const fetchTitle = () => {
+        getTitle(id, type). then(
+            title => {
+                setTitle(title)
+            }, error => {
+                console.log('Error: ', error)
+            }
+        )
+    }
+
+    useEffect(() => {
+        fetchTitle()
+    }, [])
     
     return(
         
@@ -17,25 +44,26 @@ const TitleContainer = ({ route }) => {
         height='100%'
         alignContent='center'
         my={10}>
-            
             <VStack
             space={7}
             mx={10}
             alignItems='center'>
-                <Heading size='lg'>{title}</Heading>
+                <Heading size='lg'>{title.original_title ? title.original_title : title.original_name}</Heading>
 
                 <Box>
-                <Image alt={title} 
+                {title.poster_path ? 
+                    <Image alt={title.poster_path ? title.poster_path : `${title}${releaseDate}${popularity}`} 
                     source={{uri:imgUri}} 
-                    size='2xl' />
+                    size='2xl' /> :
+                    <Icon as={Ionicons} name='image' size='lg'/>}
                 </Box>
 
-                <Text fontSize='xs'>{description}</Text>
+                <Text fontSize='xs'>{title.overview}</Text>
 
                 <HStack>
-                    <Text fontSize='xs' >Popularity: {popularity}</Text>
+                    <Text fontSize='xs' >Popularity: {title.popularity}</Text>
                     <Divider orientation="vertical" mx={3}/>
-                    <Text fontSize='xs' >Release Date: {releaseDate}</Text>
+                    <Text fontSize='xs' >Release Date: {title.release_date}</Text>
                 </HStack>
             </VStack>
         </Box>

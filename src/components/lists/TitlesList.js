@@ -1,7 +1,7 @@
 import { FlatList } from "native-base"
 import TitleCard from "../listItems/TitleCard"
 
-const TitlesList = ({ navigation, route, titles }) => {
+const TitlesList = ({ navigation, route, titles, type }) => {
 
     return(
         <FlatList 
@@ -17,6 +17,7 @@ const TitlesList = ({ navigation, route, titles }) => {
             description={item.overview}
             navigation={navigation}
             route={route}
+            type={type == 'multi' ? item.media_type : type}
             />
         }
         keyExtractor={item => item.id}

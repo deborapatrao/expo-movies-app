@@ -36,7 +36,7 @@ const TvShowContainer = ({navigation, route}) => {
             <Center px={4}>
             <TvForm onTypeChange={handleTypeChange}
             fetchTitles={fetchTitles}/>
-            {isLoading ? <Loading /> : <TitlesList titles={titles} navigation={navigation} route={route}/>}
+            {isLoading ? <Loading /> : <TitlesList titles={titles} navigation={navigation} route={route} type={'tv'}/>}
             </Center>
         </Container>
     )

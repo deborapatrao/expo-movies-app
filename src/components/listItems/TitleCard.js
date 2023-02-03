@@ -10,10 +10,9 @@ import { Box,
 import { Ionicons } from "@expo/vector-icons"
 
 const TitleCard = props => {
-    const {navigation, id, title, popularity, releaseDate, poster, description} = props
+    const {navigation, id, title, popularity, releaseDate, poster, description, type} = props
     const imgBaseUri = 'https://image.tmdb.org/t/p/w185'
     const imgUri= `${imgBaseUri}${poster}`
-
     return(
         <Box>
             <HStack
@@ -41,11 +40,7 @@ const TitleCard = props => {
                     onPress={() => {
                         navigation.navigate('Title', {
                             id,
-                            title,
-                            imgUri,
-                            description,
-                            popularity,
-                            releaseDate
+                            type
                         })
                     }}>More details</Button>
                 </VStack>

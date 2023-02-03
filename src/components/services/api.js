@@ -31,3 +31,17 @@ export const getTitles = async (media, type) => {
     }
 }
 
+export const getTitle = async (id, type) => {
+    const url = `${BASE_URL}${type}/${id}${APP_KEY}&page=1`
+    const axios = require('axios');
+    try {
+        const response = await axios.get(url);
+
+        const title = response.data;
+        return title 
+        
+    } catch (error) {
+        console.error(error);
+    }
+}
+

@@ -36,7 +36,7 @@ const MoviesContainer = ({navigation, route}) => {
             <Center px={4}>
             <MoviesForm onTypeChange={handleTypeChange}
             fetchTitles={fetchTitles}/>
-            {isLoading ? <Loading /> : <TitlesList titles={titles} navigation={navigation} route={route}/>}
+            {isLoading ? <Loading /> : <TitlesList titles={titles} navigation={navigation} route={route} type={'movie'}/>}
             </Center>
         </Container>
     )

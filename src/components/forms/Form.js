@@ -17,13 +17,30 @@ const Form = props => {
 
 
     const onSubmit = () => {
-        fetchTitles()
+        validate() ? fetchTitles() : console.log('validation failed')
+    }
+
+    const validate = () => {
+        if(searchData === undefined) {
+            setErrors({
+                ...errors,
+                name: 'Movie/TV show name is required'
+            });
+            return false
+        } else if (searchType ===undefined) {
+            setErrors({ ...errors,
+                name: 'Search type is required'
+              });
+              return false;
+        }
+
+        return true
     }
 
     return(
         <VStack space={2} py={5}>
         
-            <FormControl isRequired isInvalid>
+            <FormControl isRequired isInvalid={'name' in errors}>
                 <FormControl.Label fontSize='sm'>Search Movie/Show Name</FormControl.Label>
                 <Input 
                 placeholder='i.e. James Bond, CSI'
@@ -38,6 +55,9 @@ const Form = props => {
                     setSearchData({...searchData, name:value})
                 }}
                 />
+                {'name' in errors ? <FormControl.ErrorMessage>Error</FormControl.ErrorMessage> : <FormControl.HelperText>
+                Movie/TV show name is required
+          </FormControl.HelperText>}
 
             <FormControl.Label 
                 fontSize='sm'
