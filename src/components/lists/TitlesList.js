@@ -9,7 +9,7 @@ const TitlesList = ({ navigation, titles }) => {
         data={titles}
         renderItem={({ item }) => 
             <TitleCard 
-            title={item.original_title}
+            title={item.original_title ? item.original_title : item.original_name}
             popularity={item.popularity}
             releaseDate={item.release_date}
             poster={item.poster_path}

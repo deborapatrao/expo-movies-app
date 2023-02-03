@@ -5,7 +5,9 @@ import { Box,
     Text,
     Button,
     Divider,
-    Heading} from "native-base"
+    Heading,
+    Icon} from "native-base"
+import { Ionicons } from "@expo/vector-icons"
 
 const TitleCard = props => {
     const {navigation, title, popularity, releaseDate, poster, description} = props
@@ -16,19 +18,26 @@ const TitleCard = props => {
         <Box>
             <HStack
             justifyContent='center'
-
-            >
-                <Box width='30%' alignSelf='center'>
-                    <Image alt={title} 
+            maxWidth='100%'>
+                <Box width='28%' 
+                alignSelf='center'
+                alignItems='center'
+                justifyContent='center'
+                mr={3}>
+                    {poster ? 
+                    <Image alt={poster ? poster : `${title}${releaseDate}${popularity}`} 
                     source={{uri:imgUri}} 
-                    size='lg' />
+                    size='lg' /> :
+                    <Icon as={Ionicons} name='image' size='lg'/>}
+                    
                 </Box>
 
-                <VStack width='70%' alignContent='start'>
+                <VStack width='68%' alignContent='start'>
                     <Heading size='xs'>{title}</Heading>
-                    <Text>Popularity: {popularity}</Text>
-                    <Text>Release Date: {releaseDate}</Text>
+                    <Text fontSize='xs'>Popularity: {popularity}</Text>
+                    <Text fontSize='xs'>Release Date: {releaseDate}</Text>
                     <Button bg='#C9184A'
+                    _pressed={{ backgroundColor:'#800F2F' }}
                     onPress={() => {
                         navigation.navigate('Title', {
                             title,

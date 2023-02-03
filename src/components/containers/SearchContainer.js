@@ -20,7 +20,7 @@ const SearchContainer = ({ navigation }) => {
                 setIsLoading(false)
             },
             error => {
-                console.log('Search container error', error)
+                console.log('Error: ', error)
             }
         )
     }

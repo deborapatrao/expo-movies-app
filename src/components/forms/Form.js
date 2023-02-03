@@ -12,7 +12,7 @@ import { useState } from "react"
 const Form = props => {
     const { fetchTitles, onKeywordChange, onTypeChange } =props
     const [searchData, setSearchData] = useState({})
-    const [searchType, setSearchType] = useState('multi')
+    const [searchType, setSearchType] = useState('')
     const [errors, setErrors] = useState({})
 
 
@@ -28,7 +28,7 @@ const Form = props => {
                 <Input 
                 placeholder='i.e. James Bond, CSI'
                 variant='filled'
-                br='gray.200'
+                bg='gray.200'
                 px={3}
                 width='100%'
                 InputLeftElement={<Icon size={5} ml={2} color='gray.400' as={<Ionicons name='ios-search' />}/>}
@@ -68,6 +68,7 @@ const Form = props => {
                     startIcon={<Icon as={Ionicons} name='ios-search'/>}
                     width='30%'
                     bg='#C9184A'
+                    _pressed={{ backgroundColor:'#800F2F' }}
                     >Search</Button>
             </HStack>
             </FormControl>

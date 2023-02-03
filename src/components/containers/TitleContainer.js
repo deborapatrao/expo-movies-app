@@ -2,16 +2,26 @@ import { Box,
     Text, 
     Divider, 
     Heading, 
-    Image, 
-    VStack } from "native-base"
+    Image,
+    Center, 
+    VStack, 
+    HStack} from "native-base"
 
 const TitleContainer = ({ navigation, route }) => {
     const { title, imgUri, description, popularity, releaseDate } = route.params
 
     return(
         <>
-        <Box>
-            <VStack>
+        <Box
+        width='100%'
+        height='100%'
+        alignContent='center'
+        my={10}>
+            
+            <VStack
+            space={7}
+            mx={10}
+            alignItems='center'>
                 <Heading size='lg'>{title}</Heading>
 
                 <Box>
@@ -20,13 +30,13 @@ const TitleContainer = ({ navigation, route }) => {
                     size='2xl' />
                 </Box>
 
-                <Text>{description}</Text>
+                <Text fontSize='xs'>{description}</Text>
 
-                <Box>
-                    <Text>Popularity: {popularity}</Text>
-                    <Divider orientation="vertical" mx='3'/>
-                    <Text>Release Date: {releaseDate}</Text>
-                </Box>
+                <HStack>
+                    <Text fontSize='xs' b>Popularity: {popularity}</Text>
+                    <Divider orientation="vertical" mx={3}/>
+                    <Text fontSize='xs' b>Release Date: {releaseDate}</Text>
+                </HStack>
             </VStack>
         </Box>
         </>
